@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { FaStar, FaCodeBranch, FaEye } from "react-icons/fa";
+
 const fetchRepo = async (name: string) => {
   const response = await fetch(`https://api.github.com/repos/lilKriT/${name}`);
   const repo = await response.json();
@@ -7,9 +10,21 @@ const fetchRepo = async (name: string) => {
 
 const Repo = async ({ name }: { name: string }) => {
   const repo = await fetchRepo(name);
-  //   console.log(repo);
 
-  return <div>Repo</div>;
+  return (
+    <div>
+      <h2>{repo.name}</h2>
+      <p>{repo.description}</p>
+      <div>
+        <FaStar />
+        {repo.stargazers_count}
+        <FaCodeBranch />
+        {repo.forks_count}
+        <FaEye />
+        {repo.watchers_count}
+      </div>
+    </div>
+  );
 };
 
 export default Repo;
