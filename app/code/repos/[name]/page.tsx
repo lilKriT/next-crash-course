@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import Repo from "@/app/components/Repo";
 import RepoDirs from "@/app/components/RepoDirs";
 
@@ -9,10 +10,14 @@ const RepoPage = ({ params: { name } }: { params: { name: string } }) => {
     <div>
       <Link href="/code/repos">Go back</Link>
       {/* This error is hardcoded in TS! */}
-      {/* @ts-expect-error Server Component */}
-      <Repo name={name} />
-      {/* @ts-expect-error Server Component */}
-      <RepoDirs name={name} />
+      <Suspense fallback={<div>Loading repo...</div>}>
+        {/* @ts-expect-error Server Component */}
+        <Repo name={name} />
+      </Suspense>
+      <Suspense fallback={<div>Loading directories...</div>}>
+        {/* @ts-expect-error Server Component */}
+        <RepoDirs name={name} />
+      </Suspense>
     </div>
   );
 };
