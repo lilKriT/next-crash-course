@@ -1,6 +1,15 @@
+// Important!
+// Every component is by default, a server component unless specified otherwise.
+// Pro: Faster, better SEO. Con: Less Interactive, can't use state and effect.
+// This is how you turn Server Component into Client Component:
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 const Header = () => {
+  const [first, setFirst] = useState("second");
+
   return (
     <header className="bg-slate-200">
       <div className="container">
