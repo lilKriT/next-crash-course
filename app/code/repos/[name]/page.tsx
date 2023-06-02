@@ -1,4 +1,4 @@
-import React from "react";
+import Repo from "@/app/components/Repo";
 
 // interface IRepoPage {
 //   params: {
@@ -11,8 +11,9 @@ import React from "react";
 const RepoPage = ({ params: { name } }: { params: { name: string } }) => {
   return (
     <div>
-      <h2>{name}</h2>
-      <p>Repo details</p>
+      {/* This error is hardcoded in TS! */}
+      {/* @ts-expect-error Server Component */}
+      <Repo name={name} />
     </div>
   );
 };
