@@ -2,7 +2,11 @@ import Link from "next/link";
 import { FaStar, FaCodeBranch, FaEye } from "react-icons/fa";
 
 const fetchRepos = async () => {
-  const response = await fetch("https://api.github.com/users/lilKriT/repos");
+  const response = await fetch("https://api.github.com/users/lilKriT/repos", {
+    next: {
+      revalidate: 60, // This means 60 seconds
+    },
+  });
   const repos = await response.json();
 
   //   This is just for debugging:
