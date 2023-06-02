@@ -5,6 +5,9 @@ const fetchRepos = async () => {
   const response = await fetch("https://api.github.com/users/lilKriT/repos");
   const repos = await response.json();
 
+  //   This is just for debugging:
+  //   await new Promise((resolve) => setTimeout(resolve, 1000));
+
   return repos;
 };
 
