@@ -3,6 +3,7 @@ import Link from "next/link";
 import Courses from "./components/Courses";
 import { useState, useEffect } from "react";
 import LoadingPage from "./loading"; // we need to add this manually because this is a client component
+import CourseSearch from "./components/CourseSearch";
 
 const HomePage = () => {
   const [courses, setCourses] = useState([]);
@@ -26,6 +27,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>Welcome to lilKriT's Page</h1>
+      <CourseSearch getSearchResults={(results: any) => setCourses(results)} />
       <Courses courses={courses} />
     </div>
   );
